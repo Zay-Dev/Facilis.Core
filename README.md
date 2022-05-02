@@ -8,7 +8,7 @@ Dependency-less core library, mostly contains the abstract and enums elements
 Entity Framework Core's implementations
 
 
-### Entities
+### Interfaces
 
 #### IEntityWithId
 
