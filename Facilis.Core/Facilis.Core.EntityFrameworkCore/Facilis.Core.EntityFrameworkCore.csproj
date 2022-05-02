@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Zay Lau</Authors>
+    <Copyright>https://github.com/Zay-Dev/Facilis.Core/blob/master/LICENSE</Copyright>
+    <PackageProjectUrl>https://github.com/Zay-Dev/Facilis.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Zay-Dev/Facilis.Core</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
