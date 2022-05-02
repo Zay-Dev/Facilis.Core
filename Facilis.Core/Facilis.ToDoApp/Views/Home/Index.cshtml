@@ -1,0 +1,215 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        background: linear-gradient(132deg, rgba(254,193,194,1) 0%, rgba(154,112,201,1) 100%);
+    }
+
+    .container {
+        width: 400px;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .css-loader-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .css-loader-wrapper:before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            content: '';
+            background-color: rgba(0, 0, 0, .3);
+        }
+
+    .lds-dual-ring {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+    }
+
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+
+    @@keyframes lds-dual-ring {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
+
+<script type="text/javascript">
+    const data = {
+        isLoading: false,
+        form: {
+            name: '',
+        },
+        todoItems: [],
+        doneItems: [],
+
+        init: function () {
+            that = this;
+            fetchItems();
+        },
+    };
+    const cssLoader = (() => {
+        const defaultDelay = 250;
+
+        return {
+            show: (delay) => {
+                return new Promise((resolve) => {
+                    that.isLoading = true;
+                    setTimeout(resolve, delay || defaultDelay);
+                });
+            },
+            hide: () => that.isLoading = false,
+        };
+    })();
+
+    const fetchItems = () => {
+        return cssLoader.show()
+            .then(() => axios.get('/api/to-do-items')
+                .then(response => {
+                    that.todoItems = response.data
+                        .filter(item => item.status == 0);
+                    that.doneItems = response.data
+                        .filter(item => item.status != 0);
+                })
+            )
+            .then(cssLoader.hide);
+    };
+    const postItem = function() {
+        return cssLoader.show()
+            .then(() => axios.post(`/api/to-do-items/${data.form.name}`)
+                .then(() => {
+                    that.form.name = '';
+                    return fetchItems();
+                })
+            )
+            .then(cssLoader.hide);
+    };
+    const updateItem = (id, isMarkDone) => {
+        return cssLoader.show()
+            .then(() => axios
+                .patch(`/api/to-do-items/${id}/${isMarkDone ? 'done' : 'undo'}`)
+                .then(fetchItems)
+            )
+            .then(cssLoader.hide);
+    };
+    const deleteItem = (id) => {
+        return cssLoader.show()
+            .then(() => axios.delete(`/api/to-do-items/${id}`)
+                .then(fetchItems)
+            )
+            .then(cssLoader.hide);
+    };
+
+    let that;
+</script>
+
+<div class="vh-100 d-flex align-items-center justify-content-center"
+     x-data="data">
+    <div class="container p-0 bg-light rounded">
+        <div class="d-flex text-center">
+            <div class="w-50 py-3">
+                <span class="fs-1 text-info">
+                    <i class="fa-regular fa-calendar-check"></i>
+                </span>
+            </div>
+
+            <div class="w-50 bg-black bg-opacity-10">
+            </div>
+        </div>
+
+        <div class="p-4"
+             x-on:click="console.log($data.todoItems)">
+            <div class="d-flex mb-3">
+                <input class="form-control me-2"
+                       placeholder="New item..."
+                       x-model="form.name" />
+
+                <button class="btn btn-primary"
+                        x-on:click="postItem()">
+                    Add
+                </button>
+            </div>
+
+            <template x-for="item in todoItems" x-key="item.id">
+                <div class="mb-2">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center flex-grow-1 clickable"
+                             x-on:click="updateItem(item.id, true)">
+                            <div class="me-3 fs-4">
+                                <i class="fa-regular fa-square"></i>
+                            </div>
+
+                            <div x-text="item.name"></div>
+                        </div>
+
+                        <div class="clickable"
+                             x-on:click="deleteItem(item.id)">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <hr />
+
+            <div class="text-decoration-line-through text-black text-opacity-25">
+                <template x-for="item in doneItems" x-key="item.id">
+                    <div class="mb-2">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center flex-grow-1 clickable"
+                                 x-on:click="updateItem(item.id, false)">
+                                <div class="me-3 fs-4">
+                                    <i class="fa-regular fa-square-check"></i>
+                                </div>
+
+                                <div x-text="item.name"></div>
+                            </div>
+
+                            <div class="clickable text-black"
+                                 x-on:click="deleteItem(item.id)">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+    <div class="css-loader-wrapper"
+         x-show="isLoading">
+        <div class="lds-dual-ring"></div>
+    </div>
+</div>

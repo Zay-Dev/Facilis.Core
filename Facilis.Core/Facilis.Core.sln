@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facilis.Core", "Facilis.Core\Facilis.Core.csproj", "{9B3E839F-875D-4E20-A26C-706F62401536}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facilis.Core.EntityFrameworkCore", "Facilis.Core.EntityFrameworkCore\Facilis.Core.EntityFrameworkCore.csproj", "{649467D4-C550-449D-B0DD-814A7895F80D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facilis.ToDoApp", "Facilis.ToDoApp\Facilis.ToDoApp.csproj", "{BCBB123A-B42F-4236-A9E4-E2588AE9A78A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Facilis.Core.Tests", "Facilis.Core.Tests\Facilis.Core.Tests.csproj", "{F29B6AC1-8D19-4286-BD1F-53B62E0A97F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Facilis.Extensions.EntityFrameworkCore", "Facilis.Extensions.EntityFrameworkCore\Facilis.Extensions.EntityFrameworkCore.csproj", "{6E0AD0F4-4FE3-4F5C-962E-2AE0FBAE97D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B3E839F-875D-4E20-A26C-706F62401536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B3E839F-875D-4E20-A26C-706F62401536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B3E839F-875D-4E20-A26C-706F62401536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B3E839F-875D-4E20-A26C-706F62401536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{649467D4-C550-449D-B0DD-814A7895F80D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{649467D4-C550-449D-B0DD-814A7895F80D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{649467D4-C550-449D-B0DD-814A7895F80D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{649467D4-C550-449D-B0DD-814A7895F80D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCBB123A-B42F-4236-A9E4-E2588AE9A78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCBB123A-B42F-4236-A9E4-E2588AE9A78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCBB123A-B42F-4236-A9E4-E2588AE9A78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCBB123A-B42F-4236-A9E4-E2588AE9A78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F29B6AC1-8D19-4286-BD1F-53B62E0A97F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F29B6AC1-8D19-4286-BD1F-53B62E0A97F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F29B6AC1-8D19-4286-BD1F-53B62E0A97F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F29B6AC1-8D19-4286-BD1F-53B62E0A97F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E0AD0F4-4FE3-4F5C-962E-2AE0FBAE97D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E0AD0F4-4FE3-4F5C-962E-2AE0FBAE97D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E0AD0F4-4FE3-4F5C-962E-2AE0FBAE97D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E0AD0F4-4FE3-4F5C-962E-2AE0FBAE97D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78EC7A9B-70D2-49F9-A1E5-BE76AB5AB2A9}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Facilis.Core.EntityFrameworkCore\Facilis.Core.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Facilis.Extensions.EntityFrameworkCore\Facilis.Extensions.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>
